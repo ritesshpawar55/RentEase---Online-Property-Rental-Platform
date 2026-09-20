@@ -1,0 +1,370 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* User's Light Palette Hex Values */
+  --light-shade-1: #96A78D;
+  --light-shade-2: #B6CEB4;
+  --light-shade-3: #DCE9CF;
+  --light-shade-4: #F0F0F0;
+
+  /* Theme Mapping - LIGHT MODE */
+  --nav-bg: #96a78d;
+  --nav-text: #ffffff;
+  --body-bg-top: var(--light-shade-4);
+  --body-bg-mid: var(--light-shade-3);
+  --body-bg-bottom: var(--light-shade-2);
+  --footer-bg: var(--light-shade-1);
+
+  --text-primary: #273338;
+  --text-secondary: #5d6e64;
+  --text-muted: #809689;
+
+  --card-bg: rgba(255, 255, 255, 0.7);
+  --card-border: rgba(150, 167, 141, 0.25);
+
+  --button-bg: var(--light-shade-1);
+  --button-hover: #819179;
+
+  --shadow-color: rgba(39, 51, 56, 0.08);
+  --badge-bg: rgba(150, 167, 141, 0.15);
+  --badge-text: #2B5748;
+  --accent-color: #2B5748;
+
+  /* Core RentEase Variable Overrides */
+  --color-brand-primary: var(--button-bg);
+  --color-brand-secondary: var(--accent-color);
+  --color-brand-accent: var(--accent-color);
+
+  --color-surface-base: var(--body-bg-top);
+  --color-surface-raised: #ffffff;
+  --color-surface-overlay: var(--body-bg-mid);
+  --color-surface-glass: var(--card-bg);
+
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+
+  --color-border: var(--card-border);
+  --color-border-bright: var(--light-shade-1);
+
+  --color-success: #2E7D32;
+  --color-warning: #EF6C00;
+  --color-danger: #C62828;
+
+  /* AI Badge Colors */
+  --badge-fair-deal: #2E7D32;
+  --badge-great-value: var(--light-shade-1);
+  --badge-above-market: #C62828;
+
+  /* 3D / Depth */
+  --shadow-card: 0 4px 20px var(--shadow-color);
+  --shadow-elevated: 0 10px 40px rgba(39, 51, 56, 0.1);
+  --glow-primary: 0 0 24px rgba(150, 167, 141, 0.25);
+  --glow-accent: 0 0 16px rgba(182, 206, 180, 0.3);
+}
+
+[data-theme="dark"] {
+  /* User's Dark Palette Hex Values */
+  --dark-shade-1: #273338;
+  --dark-shade-2: #2B5748;
+  --dark-shade-3: #618764;
+  --dark-shade-4: #9CB080;
+
+  /* Theme Mapping - DARK MODE */
+  --nav-bg: var(--dark-shade-1);
+  --nav-text: #ffffff;
+  --body-bg-top: var(--dark-shade-2);
+  --body-bg-mid: var(--dark-shade-3);
+  --body-bg-bottom: var(--dark-shade-4);
+  --footer-bg: var(--dark-shade-3);
+
+  --text-primary: #f5fbf7;
+  --text-secondary: #dbe9da;
+  --text-muted: #87a48b;
+
+  --card-bg: rgba(39, 51, 56, 0.55);
+  --card-border: rgba(255, 255, 255, 0.08);
+
+  --button-bg: var(--dark-shade-4);
+  --button-hover: #b0c794;
+
+  --shadow-color: rgba(0, 0, 0, 0.25);
+  --badge-bg: rgba(156, 176, 128, 0.15);
+  --badge-text: #9CB080;
+  --accent-color: var(--dark-shade-4);
+
+  /* Core RentEase Variable Overrides */
+  --color-brand-primary: var(--button-bg);
+  --color-brand-secondary: var(--dark-shade-3);
+  --color-brand-accent: var(--accent-color);
+
+  --color-surface-base: var(--body-bg-top);
+  --color-surface-raised: var(--dark-shade-1);
+  --color-surface-overlay: #1e282c;
+  --color-surface-glass: var(--card-bg);
+
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+
+  --color-border: var(--card-border);
+  --color-border-bright: var(--dark-shade-4);
+
+  --color-success: #22C55E;
+  --color-warning: #F59E0B;
+  --color-danger: #EF4444;
+
+  /* AI Badge Colors */
+  --badge-fair-deal: #22C55E;
+  --badge-great-value: var(--dark-shade-4);
+  --badge-above-market: #EF4444;
+
+  /* 3D / Depth */
+  --shadow-card: 0 4px 32px var(--shadow-color);
+  --shadow-elevated: 0 8px 64px rgba(0, 0, 0, 0.4);
+  --glow-primary: 0 0 24px rgba(156, 176, 128, 0.3);
+  --glow-accent: 0 0 16px rgba(156, 176, 128, 0.2);
+}
+
+@layer base {
+  /* Box sizing reset */
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  /* Prevent horizontal scroll on all screen sizes */
+  html {
+    overflow-x: hidden;
+    width: 100%;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    width: 100%;
+    overflow-x: hidden;
+    font-family: 'Inter', sans-serif;
+    color: var(--text-primary);
+    background: linear-gradient(
+      180deg,
+      var(--body-bg-top) 0%,
+      var(--body-bg-mid) 50%,
+      var(--body-bg-bottom) 100%
+    );
+    background-attachment: fixed;
+    min-height: 100vh;
+    transition: background 0.6s ease, color 0.4s ease;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Prevent any element from causing horizontal overflow */
+  img,
+  video,
+  iframe {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Prevent inputs overflowing on small screens */
+  input,
+  select,
+  textarea,
+  button {
+    max-width: 100%;
+  }
+
+  /* Break long words/URLs on small screens */
+  h1, h2, h3, h4, h5, h6, p, span, a {
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+
+  /* Navbar always on top */
+  nav {
+    z-index: 100;
+  }
+
+  /* Footer stays below content */
+  footer {
+    position: relative;
+    z-index: 10;
+    margin-top: auto;
+  }
+
+  /* Dark mode input fix */
+  [data-theme="dark"] input,
+  [data-theme="dark"] textarea,
+  [data-theme="dark"] select {
+    color: #000000 !important;
+  }
+
+  [data-theme="dark"] select option {
+    color: var(--color-text-primary) !important;
+    background-color: var(--color-surface-overlay) !important;
+  }
+
+  [data-theme="dark"] .landing-search-input {
+    color: #ffffff !important;
+  }
+
+  /* Light mode navbar */
+  [data-theme="light"] nav .glass-card,
+  html:not([data-theme="dark"]) nav .glass-card {
+    background-color: rgba(150, 167, 141, 0.95) !important;
+  }
+
+  /* Light mode page backgrounds */
+  [data-theme="light"] .absolute.inset-0.bg-gradient-to-b.z-0,
+  html:not([data-theme="dark"]) .absolute.inset-0.bg-gradient-to-b.z-0 {
+    background-image: linear-gradient(
+      180deg,
+      var(--body-bg-top) 0%,
+      var(--body-bg-mid) 50%,
+      var(--body-bg-bottom) 100%
+    ) !important;
+  }
+
+  /* Light mode property price text */
+  [data-theme="light"] .absolute.bottom-3.left-4 > p:last-child,
+  html:not([data-theme="dark"]) .absolute.bottom-3.left-4 > p:last-child {
+    color: #ffffff !important;
+  }
+
+  /* Dark mode city input */
+  [data-theme="dark"] .explore-city-input {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+  }
+
+  /* Light mode toast text */
+  [data-theme="light"] [role="status"],
+  [data-theme="light"] [role="alert"],
+  [data-theme="light"] .react-hot-toast div,
+  html:not([data-theme="dark"]) [role="status"],
+  html:not([data-theme="dark"]) [role="alert"],
+  html:not([data-theme="dark"]) .react-hot-toast div {
+    color: #2b5748 !important;
+  }
+
+  /* Dark mode review input */
+  [data-theme="dark"] .review-comment-input {
+    color: #ffffff !important;
+  }
+
+  /* Disable hover lift on touch devices */
+  @media (hover: none) {
+    .glass-card:hover {
+      transform: none;
+      box-shadow: var(--shadow-card);
+    }
+  }
+
+  /* Mobile font adjustments */
+  @media (max-width: 640px) {
+    .font-display {
+      letter-spacing: -0.01em;
+    }
+  }
+}
+
+@layer utilities {
+  /* Glass morphism card */
+  .glass-card {
+    background: var(--color-surface-glass);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid var(--color-border);
+    border-radius: 16px;
+    box-shadow: var(--shadow-card);
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+      box-shadow 0.3s ease,
+      border-color 0.3s ease;
+  }
+
+  .glass-card:hover {
+    transform: translateY(-4px) scale(1.01);
+    box-shadow: var(--shadow-elevated);
+    border-color: var(--color-border-bright);
+  }
+
+  /* Glow effects */
+  .glow-primary {
+    box-shadow: var(--glow-primary);
+  }
+
+  .glow-accent {
+    box-shadow: var(--glow-accent);
+  }
+
+  /* Scrollbar utilities */
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-border-bright) transparent;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: var(--color-border-bright);
+    border-radius: 9999px;
+    opacity: 0.5;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background-color: var(--color-brand-accent);
+  }
+
+  /* Safe area for notched phones */
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  /* Responsive heading sizes */
+  .heading-responsive {
+    @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl;
+  }
+
+  .subheading-responsive {
+    @apply text-lg sm:text-xl md:text-2xl;
+  }
+
+  /* Responsive card padding */
+  .card-padding {
+    @apply p-4 sm:p-6 md:p-8;
+  }
+
+  /* Stack on mobile row on desktop */
+  .mobile-stack {
+    @apply flex flex-col sm:flex-row;
+  }
+
+  /* Auto responsive grids */
+  .auto-grid-sm {
+    @apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3;
+  }
+
+  .auto-grid-md {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3;
+  }
+} 
