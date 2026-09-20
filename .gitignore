@@ -9,6 +9,7 @@
 # Java / Maven
 # ==============================
 backend/target/
+backend/node_modules/
 *.class
 
 # ==============================
